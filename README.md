@@ -4,8 +4,8 @@
 
 STAR is a new programming style developed by Jean‐Jacques Dubray.
 He has developed a STAR Component Model (SCM) in two languages
-a) Java: https://bitbucket.org/jdubray/star‐java 
-b) JavaScript: https://bitbucket.org/jdubray/star‐javascript 
+a) Java: https://bitbucket.org/jdubray/star-java 
+b) JavaScript: https://bitbucket.org/jdubray/star-javascript 
 
 This repository contains the code of an initial effort to port [the java version (v0.8)](https://bitbucket.org/jdubray/star‐java) of the STAR Component Model (SCM) to C#.
 
