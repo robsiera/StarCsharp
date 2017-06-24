@@ -27,7 +27,7 @@
 
 using XGen.Star.Scm;
 
-namespace XGen.io.Star.Samples.Factorial
+namespace XGen.Star.Sample.Factorial.Factorial
 {
 	public class FactorialBehavior : Behavior 
 	{

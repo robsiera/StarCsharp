@@ -27,7 +27,7 @@
 
 using XGen.Star.Scm;
 
-namespace XGen.io.Star.Samples.DieHard
+namespace XGen.Star.Sample.Factorial.DieHard
 {
 	public class JugBehavior : Behavior 
 	{

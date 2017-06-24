@@ -29,7 +29,7 @@ using System.Collections.Generic;
 using XGen.Star.Scm;
 using XGen.Star.Scm.Util;
 
-namespace XGen.io.Star.Samples.DieHard
+namespace XGen.Star.Sample.Factorial.DieHard
 {
     public class DieHard : Component
     {

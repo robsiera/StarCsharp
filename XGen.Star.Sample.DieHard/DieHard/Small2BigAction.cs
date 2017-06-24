@@ -30,7 +30,7 @@ using System.Collections.Generic;
 using Action = XGen.Star.Scm.Action;
 using Type = XGen.Star.Scm.Type;
 
-namespace XGen.io.Star.Samples.DieHard
+namespace XGen.Star.Sample.Factorial.DieHard
 {
 	public class Small2BigAction : Action 
 	{
