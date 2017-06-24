@@ -27,8 +27,8 @@
 
 using System;
 using System.Collections.Generic;
-using Action = XGen.io.Star.Core.Action;
-using Type = XGen.io.Star.Core.Type;
+using Action = XGen.Star.Scm.Action;
+using Type = XGen.Star.Scm.Type;
 
 namespace XGen.io.Star.Samples.DieHard
 {

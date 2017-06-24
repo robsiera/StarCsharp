@@ -25,7 +25,8 @@
  * For more information, please refer to <http://unlicense.org/>
  *//////////////////////////////////////////////////////////////////////////
 
-using Type = XGen.io.Star.Core.Type;
+
+using XGen.Star.Scm;
 
 namespace XGen.io.Star.Samples.Factorial
 {

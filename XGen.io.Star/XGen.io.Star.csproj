@@ -33,10 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Npgsql, Version=3.2.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Npgsql.3.2.3\lib\net451\Npgsql.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -51,38 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Action.cs" />
-    <Compile Include="Core\Behavior.cs" />
-    <Compile Include="Core\Component.cs" />
-    <Compile Include="Core\Connectors\Connector.cs" />
-    <Compile Include="Core\Connectors\DatabaseException.cs" />
-    <Compile Include="Core\Connectors\DynamoDBConnector.cs" />
-    <Compile Include="Core\Connectors\H2Connector.cs" />
-    <Compile Include="Core\Connectors\MySQLConnector.cs" />
-    <Compile Include="Core\Connectors\Options.cs" />
-    <Compile Include="Core\Connectors\PostgreSQLConnector.cs" />
-    <Compile Include="Core\DesiredState.cs" />
-    <Compile Include="Core\Element.cs" />
-    <Compile Include="Core\ForbiddenState.cs" />
-    <Compile Include="Core\Guard.cs" />
-    <Compile Include="Core\Property.cs" />
-    <Compile Include="Core\Range.cs" />
-    <Compile Include="Core\Relation.cs" />
-    <Compile Include="Core\Simulation\DesiredStep.cs" />
-    <Compile Include="Core\Simulation\ForbiddenStep.cs" />
-    <Compile Include="Core\Simulation\Sequence.cs" />
-    <Compile Include="Core\Simulation\Step.cs" />
-    <Compile Include="Core\Simulation\Walk.cs" />
-    <Compile Include="Core\State.cs" />
-    <Compile Include="Core\Type.cs" />
-    <Compile Include="Core\Util\BoundInterval.cs" />
-    <Compile Include="Core\Util\BoundRange.cs" />
-    <Compile Include="Core\Util\Exception.cs" />
-    <Compile Include="Core\Util\Interval.cs" />
-    <Compile Include="Core\Util\Operator.cs" />
-    <Compile Include="Core\Util\SimpleRange.cs" />
-    <Compile Include="Core\Util\Ticker.cs" />
-    <Compile Include="Core\Util\Trace.cs" />
     <Compile Include="Samples\DieHard\Big2SmallAction.cs" />
     <Compile Include="Samples\DieHard\DesiredRange.cs" />
     <Compile Include="Samples\DieHard\DieHard.cs" />
@@ -117,6 +81,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XGen.Star.Scm\XGen.Star.Scm.csproj">
+      <Project>{BF2D4155-336F-4CBD-99B4-38DBDC2C7B6A}</Project>
+      <Name>XGen.Star.Scm</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

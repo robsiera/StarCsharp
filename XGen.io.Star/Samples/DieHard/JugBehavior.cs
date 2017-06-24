@@ -25,7 +25,7 @@
  * For more information, please refer to <http://unlicense.org/>
  *//////////////////////////////////////////////////////////////////////////
 
-using XGen.io.Star.Core;
+using XGen.Star.Scm;
 
 namespace XGen.io.Star.Samples.DieHard
 {

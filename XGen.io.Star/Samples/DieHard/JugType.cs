@@ -26,7 +26,7 @@
  *//////////////////////////////////////////////////////////////////////////
 
 
-using XGen.io.Star.Core;
+using XGen.Star.Scm;
 
 namespace XGen.io.Star.Samples.DieHard
 {

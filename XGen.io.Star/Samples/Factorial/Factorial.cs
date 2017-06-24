@@ -28,12 +28,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using XGen.io.Star.Core;
-using XGen.io.Star.Core.Simulation;
-using XGen.io.Star.Core.Util;
-using Action = XGen.io.Star.Core.Action;
-using Exception = XGen.io.Star.Core.Util.Exception;
-using Type = XGen.io.Star.Core.Type;
+using XGen.Star.Scm;
+using XGen.Star.Scm.Simulation;
+using XGen.Star.Scm.Util;
+using Action = XGen.Star.Scm.Action;
+using Exception = XGen.Star.Scm.Util.Exception;
+using Type = XGen.Star.Scm.Type;
 
 namespace XGen.io.Star.Samples.Factorial
 {

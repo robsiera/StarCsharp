@@ -26,8 +26,7 @@
  *//////////////////////////////////////////////////////////////////////////
 
 using System.Collections.Generic;
-using Action = XGen.io.Star.Core.Action;
-using Type = XGen.io.Star.Core.Type;
+using XGen.Star.Scm;
 
 namespace XGen.io.Star.Samples.Factorial
 {

@@ -25,12 +25,9 @@
  * For more information, please refer to <http://unlicense.org/>
  *//////////////////////////////////////////////////////////////////////////
 
-using System;
 using System.Collections.Generic;
-using XGen.io.Star.Core;
-using XGen.io.Star.Core.Util;
-using Action = XGen.io.Star.Core.Action;
-using Exception = XGen.io.Star.Core.Util.Exception;
+using XGen.Star.Scm;
+using XGen.Star.Scm.Util;
 
 namespace XGen.io.Star.Samples.DieHard
 {
