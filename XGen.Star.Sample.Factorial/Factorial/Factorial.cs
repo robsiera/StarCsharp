@@ -35,7 +35,7 @@ using Action = XGen.Star.Scm.Action;
 using Exception = XGen.Star.Scm.Util.Exception;
 using Type = XGen.Star.Scm.Type;
 
-namespace XGen.io.Star.Samples.Factorial
+namespace XGen.Star.Sample.Factorial.Factorial
 {
     public class Factorial : Component
     {
