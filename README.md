@@ -9,7 +9,8 @@ b) JavaScript: https://bitbucket.org/jdubray/star‐javascript
 
 This repository contains the code of an initial effort to port [the java version (v0.8)](https://bitbucket.org/jdubray/star‐java) of the STAR Component Model (SCM) to C#.
 
-Also one sample ('Factorial') has been ported. 
+Also one sample ('Factorial') has been ported.
+The 'DieHard' sample has been ported but not tested.
 
 
 ### state at june 2017
