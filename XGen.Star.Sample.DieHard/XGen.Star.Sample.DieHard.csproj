@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B11F903A-D91F-48DB-8353-E89C75E2C04D}</ProjectGuid>
+    <ProjectGuid>{ADF9F741-DADE-4F85-8A9F-0F34955D8A90}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XGen.io.Star</RootNamespace>
-    <AssemblyName>XGen.io.Star</AssemblyName>
+    <RootNamespace>XGen.Star.Sample.Factorial</RootNamespace>
+    <AssemblyName>XGen.Star.Sample.Factorial</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,35 +47,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Samples\DieHard\Big2SmallAction.cs" />
-    <Compile Include="Samples\DieHard\DesiredRange.cs" />
-    <Compile Include="Samples\DieHard\DieHard.cs" />
-    <Compile Include="Samples\DieHard\EmptyBigAction.cs" />
-    <Compile Include="Samples\DieHard\EmptyBigEmptySmallRange.cs" />
-    <Compile Include="Samples\DieHard\EmptyBigFullSmallRange.cs" />
-    <Compile Include="Samples\DieHard\EmptyBigPartialSmallRange.cs" />
-    <Compile Include="Samples\DieHard\EmptySmallAction.cs" />
-    <Compile Include="Samples\DieHard\FillBigAction.cs" />
-    <Compile Include="Samples\DieHard\FillSmallAction.cs" />
-    <Compile Include="Samples\DieHard\FullBigEmptySmallRange.cs" />
-    <Compile Include="Samples\DieHard\FullBigFullSmallRange.cs" />
-    <Compile Include="Samples\DieHard\FullBigPartialSmallRange.cs" />
-    <Compile Include="Samples\DieHard\InitializeAction.cs" />
-    <Compile Include="Samples\DieHard\JugBehavior.cs" />
-    <Compile Include="Samples\DieHard\JugType.cs" />
-    <Compile Include="Samples\DieHard\PartialBigEmptySmallRange.cs" />
-    <Compile Include="Samples\DieHard\PartialBigFullSmallRange.cs" />
-    <Compile Include="Samples\DieHard\PartialBigPartialSmallRange.cs" />
-    <Compile Include="Samples\DieHard\Small2BigAction.cs" />
-    <Compile Include="Samples\Factorial\EqualsOneRange.cs" />
-    <Compile Include="Samples\Factorial\EqualsTwoRange.cs" />
-    <Compile Include="Samples\Factorial\Factorial.cs" />
-    <Compile Include="Samples\Factorial\FactorialBehavior.cs" />
-    <Compile Include="Samples\Factorial\FactorialType.cs" />
-    <Compile Include="Samples\Factorial\GreaterThanOneRange.cs" />
-    <Compile Include="Samples\Factorial\InitializeAction.cs" />
-    <Compile Include="Samples\Factorial\LessThanOneRange.cs" />
-    <Compile Include="Samples\Factorial\MultiplyAction.cs" />
+    <Compile Include="DieHard\Big2SmallAction.cs" />
+    <Compile Include="DieHard\DesiredRange.cs" />
+    <Compile Include="DieHard\DieHard.cs" />
+    <Compile Include="DieHard\EmptyBigAction.cs" />
+    <Compile Include="DieHard\EmptyBigEmptySmallRange.cs" />
+    <Compile Include="DieHard\EmptyBigFullSmallRange.cs" />
+    <Compile Include="DieHard\EmptyBigPartialSmallRange.cs" />
+    <Compile Include="DieHard\EmptySmallAction.cs" />
+    <Compile Include="DieHard\FillBigAction.cs" />
+    <Compile Include="DieHard\FillSmallAction.cs" />
+    <Compile Include="DieHard\FullBigEmptySmallRange.cs" />
+    <Compile Include="DieHard\FullBigFullSmallRange.cs" />
+    <Compile Include="DieHard\FullBigPartialSmallRange.cs" />
+    <Compile Include="DieHard\InitializeAction.cs" />
+    <Compile Include="DieHard\JugBehavior.cs" />
+    <Compile Include="DieHard\JugType.cs" />
+    <Compile Include="DieHard\PartialBigEmptySmallRange.cs" />
+    <Compile Include="DieHard\PartialBigFullSmallRange.cs" />
+    <Compile Include="DieHard\PartialBigPartialSmallRange.cs" />
+    <Compile Include="DieHard\Small2BigAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

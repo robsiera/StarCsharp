@@ -181,7 +181,7 @@ namespace XGen.io.Star.Samples.DieHard
             return (_jugs.CurrentState() == _desired);
         }
 
-        public static void MainDieHard(string[] args)
+        public static void Main(string[] args)
         {
             try
             {

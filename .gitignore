@@ -1,8 +1,5 @@
 *.user
-MVCApi/bin/
-MVCApi/obj/
 packages/
-XGen.io.Star/bin/
-XGen.io.Star/obj/
 *.suo
-XGen.Star.Scm/obj/
+*/bin/
+*/obj/
