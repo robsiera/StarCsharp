@@ -25,18 +25,17 @@
  * For more information, please refer to <http://unlicense.org/>
  *//////////////////////////////////////////////////////////////////////////
 
-using System;
 using System.Collections.Generic;
 using XGen.io.Star.Core;
 
-namespace XGen.io.Star.Sample.DieHard
+namespace XGen.io.Star.Samples.DieHard
 {
 	public class DesiredRange : Range 
 	{
-		public bool eval(IDictionary<String, Object> _instance) 
+		public bool eval(IDictionary<string, object> instance) 
 		{
-			Int16 big = (Int16)_instance["big"];
-			//Int16 small = (Int16)_instance.get("small");
+			short big = (short)instance["big"];
+			//int small = (int)_instance["small");
 			return (big == 4);
 		}
 	}

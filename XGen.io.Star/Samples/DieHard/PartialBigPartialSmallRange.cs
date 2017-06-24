@@ -24,15 +24,20 @@
  * 
  * For more information, please refer to <http://unlicense.org/>
  *//////////////////////////////////////////////////////////////////////////
-namespace XGen.io.Star.Sample.DieHard
+
+using System;
+using System.Collections.Generic;
+using XGen.io.Star.Core;
+
+namespace XGen.io.Star.Samples.DieHard
 {
 	public class PartialBigPartialSmallRange : Range 
 	{
-		public bool eval(IDictionary<String, Object> _instance) 
+		public bool eval(IDictionary<string, object> instance) 
 		{
-			Int16 big = (Int16)_instance.get("big");
-			Int16 small = (Int16)_instance.get("small");
-			return ( (big >0) && (big < JugType.bigSize) && (small < JugType.smallSize) && (small>0));
+			int big = (int)instance["big"];
+			int small = (int)instance["small"];
+			return ( (big >0) && (big < JugType._bigSize) && (small < JugType._smallSize) && (small>0));
 		}
 	}
 }

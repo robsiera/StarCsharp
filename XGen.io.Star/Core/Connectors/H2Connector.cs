@@ -43,34 +43,34 @@ namespace XGen.io.Star.Core.Connectors
 	////		try 
 	////		{
 	////			_idCount =  (int )(Math. random() * 1147483647 + 1);
-	////			System.Console.WriteLine("[H2] db:"+connOptions.get("db")+"/");
-	////			//+connOptions.get("db")
+	////			System.Console.WriteLine("[H2] db:"+connOptions["db")+"/");
+	////			//+connOptions["db")
 	////			// H2 database can be found in absolute directory /data/h2/
-	////			Connection h2conn = DriverManager.getConnection("jdbc:h2:/data/h2/"+connOptions.get("db"), connOptions.get("user"), connOptions.get("password"));
+	////			Connection h2conn = DriverManager.getConnection("jdbc:h2:/data/h2/"+connOptions["db"), connOptions["user"), connOptions["password"));
 	////			_h2Connection = h2conn;
-	////			if (connOptions.get("tableName") != null) 
+	////			if (connOptions["tableName") != null) 
 	////			{
-	////				_tableName = connOptions.get("tableName");
+	////				_tableName = connOptions["tableName");
 	////			}
-	////			if (connOptions.get("insert") != null) 
+	////			if (connOptions["insert") != null) 
 	////			{
-	////				_insert = connOptions.get("insert");
+	////				_insert = connOptions["insert");
 	////				_keys = Arrays.asList(_insert.replaceAll("\\s+","").split(","));
 	////			}
-	////			if (connOptions.get("select") != null) 
+	////			if (connOptions["select") != null) 
 	////			{
-	////				_select = connOptions.get("select");
+	////				_select = connOptions["select");
 	////			}
-	////			if (connOptions.get("instanceId") != null) 
+	////			if (connOptions["instanceId") != null) 
 	////			{
-	////				_instanceId = connOptions.get("instanceId");
+	////				_instanceId = connOptions["instanceId");
 	////			}
-	////			if (connOptions.get("create_table") != null) 
+	////			if (connOptions["create_table") != null) 
 	////			{
 	////				try 
 	////				{
 	////					Statement cts = _h2Connection.createStatement();
-	////					String ct = connOptions.get("create_table");
+	////					String ct = connOptions["create_table");
 	////					bool res = cts.execute(ct);
 	////				} catch (SQLException e) 
 	////				{
@@ -103,7 +103,7 @@ namespace XGen.io.Star.Core.Connectors
 	////		for(String key : _keys) 
 	////		{
 	////			insert += ", "+key;
-	////			query += ", '"+item.get(key)+"'";
+	////			query += ", '"+item[key)+"'";
 	////		} 
 	////		query += ");";
 	////		query  = "INSERT INTO \""+_tableName+"\" ("+insert+") VALUES (" + query;
@@ -139,7 +139,7 @@ namespace XGen.io.Star.Core.Connectors
 	////	{
 	////		Statement statement = null;
 	////		IDictionary<String,Object> item = (IDictionary<String,Object>)params.Item;
-	////		String query  = "SELECT * FROM "+_tableName+" WHERE "+_select+" = "+item.get(_instanceId);
+	////		String query  = "SELECT * FROM "+_tableName+" WHERE "+_select+" = "+item[_instanceId);
 	////			// could look for a specific step too
 	////			query += ";";
 	////		IDictionary<String,Object> res = new Dictionary<String,Object>();
@@ -151,7 +151,7 @@ namespace XGen.io.Star.Core.Connectors
 	////			{
 	////				for (String key : _keys) 
 	////				{
-	////					res.put(key, rs.getString(key));
+	////					res.Add(key, rs.getString(key));
 	////				}
 	////			}
 	////		} 

@@ -25,203 +25,207 @@
  * For more information, please refer to <http://unlicense.org/>
  *//////////////////////////////////////////////////////////////////////////
 
+using System;
+using System.Collections.Generic;
 using XGen.io.Star.Core;
 using XGen.io.Star.Core.Util;
+using Action = XGen.io.Star.Core.Action;
+using Exception = XGen.io.Star.Core.Util.Exception;
 
-namespace XGen.io.Star.Sample.DieHard
+namespace XGen.io.Star.Samples.DieHard
 {
-	public class DieHard : Component 
-	{
-		JugType jugs;
-		JugBehavior behavior;
-		FillBigAction fillBig;
-		FillSmallAction fillSmall;
-		EmptyBigAction emptyBig;
-		EmptySmallAction emptySmall;
-		Big2SmallAction big2Small;
-		Small2BigAction small2Big;
-		InitializeAction initialize;
-		
-		State emptyBigEmptySmall;
-		State fullBigFullSmall;
-		State fullBigEmptySmall;
-		State emptyBigFullSmall;
-		State partialBigEmptySmall;
-		State partialBigFullSmall;
-		State fullBigPartialSmall;
-		State emptyBigPartialSmall;
-		State partialBigPartialSmall;
+    public class DieHard : Component
+    {
+        private InitializeAction _initialize;
+        private readonly JugType _jugs;
+        private readonly JugBehavior _behavior;
+        private readonly FillBigAction _fillBig;
+        private readonly FillSmallAction _fillSmall;
+        private readonly EmptyBigAction _emptyBig;
+        private readonly EmptySmallAction _emptySmall;
+        private readonly Big2SmallAction _big2Small;
+        private readonly Small2BigAction _small2Big;
 
-		ForbiddenState forbidden;
-		DesiredState desired;
-		Trace trace;
-		
-		public DieHard(JugBehavior behavior) 
-		{
-			this.add(behavior);
-		}
-		
-		public DieHard(int big, int small)
-		{
-			
-			trace = new Trace("fact_trace");
-			
-			jugs = new JugType(big,small);
-			EmptyBigEmptySmallRange emptyBigEmptySmallRange = new EmptyBigEmptySmallRange();
-			FullBigFullSmallRange fullBigFullSmallRange = new FullBigFullSmallRange();
-			FullBigEmptySmallRange fullBigEmptySmallRange = new FullBigEmptySmallRange();
-			EmptyBigFullSmallRange emptyBigFullSmallRange = new EmptyBigFullSmallRange();
-			PartialBigEmptySmallRange partialBigEmptySmallRange = new PartialBigEmptySmallRange();
-			PartialBigFullSmallRange partialBigFullSmallRange = new PartialBigFullSmallRange();
-			FullBigPartialSmallRange fullBigPartialSmallRange = new FullBigPartialSmallRange();
-			EmptyBigPartialSmallRange emptyBigPartialSmallRange = new EmptyBigPartialSmallRange();
-			PartialBigPartialSmallRange partialBigPartialSmallRange = new PartialBigPartialSmallRange();		
-			
-			fillBig = new FillBigAction(jugs);
-			fillSmall = new FillSmallAction(jugs);
-			emptyBig = new EmptyBigAction(jugs);
-			emptySmall = new EmptySmallAction(jugs);
-			big2Small = new Big2SmallAction(jugs);
-			small2Big = new Small2BigAction(jugs);
+        private readonly State _emptyBigEmptySmall;
+        private readonly State _fullBigFullSmall;
+        private readonly State _fullBigEmptySmall;
+        private readonly State _emptyBigFullSmall;
+        private readonly State _partialBigEmptySmall;
+        private readonly State _partialBigFullSmall;
+        private readonly State _fullBigPartialSmall;
+        private readonly State _emptyBigPartialSmall;
+        private readonly State _partialBigPartialSmall;
 
-			fillBig.setTrace(trace);
-			fillSmall.setTrace(trace);
-			emptyBig.setTrace(trace);
-			emptySmall.setTrace(trace);
-			big2Small.setTrace(trace);
-			small2Big.setTrace(trace);
+        private readonly ForbiddenState _forbidden;
+        private readonly DesiredState _desired;
+        private readonly Trace trace;
 
-			fillBig.setId("fillBig");
-			fillSmall.setId("fillSmall");
-			emptyBig.setId("emptyBig");
-			emptySmall.setId("emptySmall");
-			big2Small.setId("big2Small");
-			small2Big.setId("small2Big");
+        public DieHard(JugBehavior behavior)
+        {
+            this.Add(behavior);
+        }
 
-			emptyBigEmptySmall = new State(fillBig);
-			fullBigFullSmall = new State(emptyBig);
-			fullBigEmptySmall = new State(big2Small);
-			emptyBigFullSmall = new State(small2Big);
-			partialBigEmptySmall = new State(big2Small);
-			partialBigFullSmall = new State(emptySmall);
-			fullBigPartialSmall = new State(big2Small);
-			emptyBigPartialSmall = new State(small2Big);
-			partialBigPartialSmall = new State(big2Small);
+        public DieHard(int big, int small)
+        {
 
-			forbidden = new ForbiddenState();
-			desired = new DesiredState();
-			forbidden.setId("f1");
-			desired.setId("d1");
-			emptyBigEmptySmall.setTrace(trace).setId("emptyBigEmptySmall");
-			emptyBigEmptySmall.add(fillSmall);
-			fullBigFullSmall.setTrace(trace).setId("fullBigFullSmall");
-			fullBigEmptySmall.setTrace(trace).setId("fullBigEmptySmall");
-			fullBigEmptySmall.add(fillSmall);
-			emptyBigFullSmall.setTrace(trace).setId("emptyBigFullSmall");
-			emptyBigFullSmall.add(emptySmall);
-			partialBigEmptySmall.setTrace(trace).setId("partialBigEmptySmall");
-			partialBigEmptySmall.add(emptyBig);
-			partialBigFullSmall.setTrace(trace).setId("partialBigFullSmall");
-			partialBigFullSmall.add(emptyBig);
-			fullBigPartialSmall.setTrace(trace).setId("fullBigPartialSmall");
-			emptyBigPartialSmall.setTrace(trace).setId("emptyBigPartialSmall");
-			emptyBigPartialSmall.add(fillBig);
-			partialBigPartialSmall.setTrace(trace).setId("partialBigPartialSmall");
-			forbidden.setTrace(trace);
-			desired.setTrace(trace);
-			
-			jugs.addRange(emptyBigEmptySmall, emptyBigEmptySmallRange);
-			jugs.addRange(fullBigFullSmall,fullBigFullSmallRange);
-			jugs.addRange(fullBigEmptySmall,fullBigEmptySmallRange);
-			jugs.addRange(emptyBigFullSmall,emptyBigFullSmallRange);
-			jugs.addRange(partialBigEmptySmall,partialBigEmptySmallRange);
-			jugs.addRange(partialBigFullSmall,partialBigFullSmallRange);
-			jugs.addRange(fullBigPartialSmall,fullBigPartialSmallRange);
-			jugs.addRange(emptyBigPartialSmall,emptyBigPartialSmallRange);
-			jugs.addRange(partialBigPartialSmall,partialBigPartialSmallRange);
-			DesiredRange desiredRange = new DesiredRange();
-			jugs.addRange(desired, desiredRange);
-			
-			behavior = new JugBehavior(jugs);
-			behavior.add(emptyBigEmptySmall);
-			behavior.add(fullBigFullSmall);
-			behavior.add(partialBigEmptySmall);
-			behavior.add(partialBigFullSmall);
-			behavior.add(fullBigPartialSmall);
-			behavior.add(emptyBigPartialSmall);
-			behavior.add(partialBigPartialSmall);
-		}
-		
-		public void display() 
-		{
-			jugs.display();
-			trace.dump();
-			trace.clear();
-		}
-		
-		public override void start()
-		{
-			behavior.act(fillBig, null);
-		}
+            trace = new Trace("fact_trace");
 
-		public override void start(IDictionary<String, Object> inputs)
-		{
-			behavior.act(initialize,inputs);
-			start();
-		}
+            _jugs = new JugType(big, small);
+            EmptyBigEmptySmallRange emptyBigEmptySmallRange = new EmptyBigEmptySmallRange();
+            FullBigFullSmallRange fullBigFullSmallRange = new FullBigFullSmallRange();
+            FullBigEmptySmallRange fullBigEmptySmallRange = new FullBigEmptySmallRange();
+            EmptyBigFullSmallRange emptyBigFullSmallRange = new EmptyBigFullSmallRange();
+            PartialBigEmptySmallRange partialBigEmptySmallRange = new PartialBigEmptySmallRange();
+            PartialBigFullSmallRange partialBigFullSmallRange = new PartialBigFullSmallRange();
+            FullBigPartialSmallRange fullBigPartialSmallRange = new FullBigPartialSmallRange();
+            EmptyBigPartialSmallRange emptyBigPartialSmallRange = new EmptyBigPartialSmallRange();
+            PartialBigPartialSmallRange partialBigPartialSmallRange = new PartialBigPartialSmallRange();
 
-		public override void act(Action a)
-		{
-			behavior.act(a, null);
-		}
+            _fillBig = new FillBigAction(_jugs);
+            _fillSmall = new FillSmallAction(_jugs);
+            _emptyBig = new EmptyBigAction(_jugs);
+            _emptySmall = new EmptySmallAction(_jugs);
+            _big2Small = new Big2SmallAction(_jugs);
+            _small2Big = new Small2BigAction(_jugs);
 
-		public override bool defaultState()
-		{
-			return (jugs.currentState() == desired);
-		}
+            _fillBig.SetTrace(trace);
+            _fillSmall.SetTrace(trace);
+            _emptyBig.SetTrace(trace);
+            _emptySmall.SetTrace(trace);
+            _big2Small.SetTrace(trace);
+            _small2Big.SetTrace(trace);
 
-		public static void main(String[] args) 
-		{
-			try 
-			{
-				DieHard comp = new DieHard(0,0);
-			
-				//automatic transition
-				comp.start();
-				//while (!comp.defaultState()) {
-					comp.walk();
-				//}
-				//system triggered transition
-				//while(!comp.defaultState()) {
-				//	  comp.act(multiply);
-				//}
-				comp.display();
-				
-				IDictionary<String,Object> inputs = new Dictionary<String,Object>();
-				inputs.put("big", 1);
-				inputs.put("small",5);
-			}
-			catch (Exception e)
-			{
-				// TODO Auto-generated catch block
-				System.Console.WriteLine(e.StackTrace);
-			}
-		}
+            _fillBig.SetId("fillBig");
+            _fillSmall.SetId("fillSmall");
+            _emptyBig.SetId("emptyBig");
+            _emptySmall.SetId("emptySmall");
+            _big2Small.SetId("big2Small");
+            _small2Big.SetId("small2Big");
 
-		public Component walk()
-		{
-			this.act(big2Small);
-			this.act(emptySmall);
-			this.act(big2Small);
-			this.act(fillBig);
-			this.act(big2Small);
-			return this;
-		}
+            _emptyBigEmptySmall = new State(_fillBig);
+            _fullBigFullSmall = new State(_emptyBig);
+            _fullBigEmptySmall = new State(_big2Small);
+            _emptyBigFullSmall = new State(_small2Big);
+            _partialBigEmptySmall = new State(_big2Small);
+            _partialBigFullSmall = new State(_emptySmall);
+            _fullBigPartialSmall = new State(_big2Small);
+            _emptyBigPartialSmall = new State(_small2Big);
+            _partialBigPartialSmall = new State(_big2Small);
 
-		public override String tick(String key)
-		{
-			// TODO Auto-generated method stub
-			return null;
-		}
-	}
+            _forbidden = new ForbiddenState();
+            _desired = new DesiredState();
+            _forbidden.SetId("f1");
+            _desired.SetId("d1");
+            _emptyBigEmptySmall.SetTrace(trace).SetId("emptyBigEmptySmall");
+            _emptyBigEmptySmall.Add(_fillSmall);
+            _fullBigFullSmall.SetTrace(trace).SetId("fullBigFullSmall");
+            _fullBigEmptySmall.SetTrace(trace).SetId("fullBigEmptySmall");
+            _fullBigEmptySmall.Add(_fillSmall);
+            _emptyBigFullSmall.SetTrace(trace).SetId("emptyBigFullSmall");
+            _emptyBigFullSmall.Add(_emptySmall);
+            _partialBigEmptySmall.SetTrace(trace).SetId("partialBigEmptySmall");
+            _partialBigEmptySmall.Add(_emptyBig);
+            _partialBigFullSmall.SetTrace(trace).SetId("partialBigFullSmall");
+            _partialBigFullSmall.Add(_emptyBig);
+            _fullBigPartialSmall.SetTrace(trace).SetId("fullBigPartialSmall");
+            _emptyBigPartialSmall.SetTrace(trace).SetId("emptyBigPartialSmall");
+            _emptyBigPartialSmall.Add(_fillBig);
+            _partialBigPartialSmall.SetTrace(trace).SetId("partialBigPartialSmall");
+            _forbidden.SetTrace(trace);
+            _desired.SetTrace(trace);
+
+            _jugs.AddRange(_emptyBigEmptySmall, emptyBigEmptySmallRange);
+            _jugs.AddRange(_fullBigFullSmall, fullBigFullSmallRange);
+            _jugs.AddRange(_fullBigEmptySmall, fullBigEmptySmallRange);
+            _jugs.AddRange(_emptyBigFullSmall, emptyBigFullSmallRange);
+            _jugs.AddRange(_partialBigEmptySmall, partialBigEmptySmallRange);
+            _jugs.AddRange(_partialBigFullSmall, partialBigFullSmallRange);
+            _jugs.AddRange(_fullBigPartialSmall, fullBigPartialSmallRange);
+            _jugs.AddRange(_emptyBigPartialSmall, emptyBigPartialSmallRange);
+            _jugs.AddRange(_partialBigPartialSmall, partialBigPartialSmallRange);
+            DesiredRange desiredRange = new DesiredRange();
+            _jugs.AddRange(_desired, desiredRange);
+
+            _behavior = new JugBehavior(_jugs);
+            _behavior.Add(_emptyBigEmptySmall);
+            _behavior.Add(_fullBigFullSmall);
+            _behavior.Add(_partialBigEmptySmall);
+            _behavior.Add(_partialBigFullSmall);
+            _behavior.Add(_fullBigPartialSmall);
+            _behavior.Add(_emptyBigPartialSmall);
+            _behavior.Add(_partialBigPartialSmall);
+        }
+
+        public void Display()
+        {
+            _jugs.Display();
+            trace.Dump();
+            trace.Clear();
+        }
+
+        public override void Start()
+        {
+            _behavior.Act(_fillBig, null);
+        }
+
+        public override void Start(IDictionary<string, object> inputs)
+        {
+            _behavior.Act(_initialize, inputs);
+            Start();
+        }
+
+        public override void Act(Action a)
+        {
+            _behavior.Act(a, null);
+        }
+
+        public override bool DefaultState()
+        {
+            return (_jugs.CurrentState() == _desired);
+        }
+
+        public static void MainDieHard(string[] args)
+        {
+            try
+            {
+                DieHard comp = new DieHard(0, 0);
+
+                //automatic transition
+                comp.Start();
+                //while (!comp.defaultState()) {
+                comp.walk();
+                //}
+                //system triggered transition
+                //while(!comp.defaultState()) {
+                //	  comp.act(multiply);
+                //}
+                comp.Display();
+
+                IDictionary<string, object> inputs = new Dictionary<string, object>();
+                inputs.Add("big", 1);
+                inputs.Add("small", 5);
+            }
+            catch (Exception e)
+            {
+                // TODO Auto-generated catch block
+                System.Console.WriteLine(e.StackTrace);
+            }
+        }
+
+        public Component walk()
+        {
+            this.Act(_big2Small);
+            this.Act(_emptySmall);
+            this.Act(_big2Small);
+            this.Act(_fillBig);
+            this.Act(_big2Small);
+            return this;
+        }
+
+        public override string Tick(string key)
+        {
+            // TODO Auto-generated method stub
+            return null;
+        }
+    }
 }

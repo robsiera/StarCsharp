@@ -25,61 +25,61 @@
  * For more information, please refer to <http://unlicense.org/>
  *//////////////////////////////////////////////////////////////////////////
 
-using System;
 
-namespace XGen.io.Star.Sample.DieHard
+using XGen.io.Star.Core;
+
+namespace XGen.io.Star.Samples.DieHard
 {
 	public class JugType : Type 
 	{
-		public static  Int16 bigSize = 5;
-		public static  Int16 smallSize = 3;
+		public static int _bigSize = 5;
+		public static int _smallSize = 3;
+
+	    private int _big;
+	    private int _small;
 		
-		Int16 _big;
-		Int16 _small;
-		
-		public JugType(Int16 big, Int16 small):base() 
+		public JugType(int big, int small):base() 
 		{
 			_big = big;
 			_small = small;
-			_instance.put("big", _big);
-			_instance.put("small", _small);
+			_instance.Add("big", _big);
+			_instance.Add("small", _small);
 		}
 
-		public JugType(JugType t)
+		public JugType(JugType t):base(t)
 		{
-			super((Type)t);
-			_big = t.getBig();
-			_small = t.getSmall();
+			_big = t.GetBig();
+			_small = t.GetSmall();
 		}
 
-		public Int16 getBig() 
+		public int GetBig() 
 		{
 			return _big;
 		}
 		
-		public Int16 getSmall() 
+		public int GetSmall() 
 		{
 			return _small;
 		}
 
-		public override Type duplicate()
+		public override Type Duplicate()
 		{
 			return new JugType(this);
 		}
 
-		protected override bool sync() 
+		protected override bool Sync() 
 		{
-			_big = (Int16)_instance.get("big");
-			_small = (Int16)_instance.get("small");
+			_big = (short)_instance["big"];
+			_small = (short)_instance["small"];
 			return true;
 		}
 
-		protected override bool persist() 
+		protected override bool Persist() 
 		{
 			return true;
 		}
 
-		public override String display(String s) 
+		public override string Display(string s) 
 		{
 			System.Console.WriteLine(s);
 			return s;

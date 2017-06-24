@@ -24,13 +24,16 @@
  * 
  * For more information, please refer to <http://unlicense.org/>
  *//////////////////////////////////////////////////////////////////////////
-namespace XGen.io.Star.Sample.DieHard
+
+using XGen.io.Star.Core;
+
+namespace XGen.io.Star.Samples.DieHard
 {
 	public class JugBehavior : Behavior 
 	{
 		public JugBehavior(Type t)
 		{
-			base();
-		}
-	}
+            //todo: nothing is done with the parameter
+        }
+    }
 }

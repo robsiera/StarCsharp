@@ -32,8 +32,8 @@ namespace XGen.io.Star.Core.Util
 		ID INT,
 		INSTANCE_ID VARCHAR(36) PRIMARY KEY,
 		ACTION_CLASS VARCHAR(64),
-		TICK_COUNT Int16,
-		TICK_MAX Int16,
+		TICK_COUNT int,
+		TICK_MAX int,
 		EXPIRES BIGINT,
 		DONE bool
 	);

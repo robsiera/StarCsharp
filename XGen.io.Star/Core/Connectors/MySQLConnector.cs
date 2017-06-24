@@ -160,7 +160,7 @@ namespace XGen.io.Star.Core.Connectors
 		//{
 		//	MySqlCommand comm = null;
 		//	IDictionary<String,Object> item = (IDictionary<String,Object>)opt.Item;
-		//	//System.Console.WriteLine("[MySQLConnector] getItem:"+item.get(_instanceId));
+		//	//System.Console.WriteLine("[MySQLConnector] getItem:"+item[_instanceId));
 		//	String query  = "SELECT * FROM "+_tableName+" WHERE "+_select+" = '"+item[_instanceId]+"'";
 		//		// could look for a specific step too
 		//		query += ";";
@@ -196,7 +196,7 @@ namespace XGen.io.Star.Core.Connectors
 		//		select = _select;
 		//	if (value == null) 
 		//		value = "null";
-		//	//System.Console.WriteLine("[MySQLConnector] getItem:"+item.get(_instanceId));
+		//	//System.Console.WriteLine("[MySQLConnector] getItem:"+item[_instanceId));
 		//	String query  = "SELECT * FROM "+_tableName+" WHERE "+select+" = '"+value+"'";
 		//		// could look for a specific step too
 		//		query += ";";

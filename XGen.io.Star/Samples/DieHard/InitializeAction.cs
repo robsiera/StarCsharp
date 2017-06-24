@@ -24,17 +24,22 @@
  * 
  * For more information, please refer to <http://unlicense.org/>
  *//////////////////////////////////////////////////////////////////////////
-namespace XGen.io.Star.Sample.DieHard
+
+using System;
+using System.Collections.Generic;
+using Action = XGen.io.Star.Core.Action;
+using Type = XGen.io.Star.Core.Type;
+
+namespace XGen.io.Star.Samples.DieHard
 {
 	public class InitializeAction : Action 
 	{
 		public InitializeAction(Type t) 
 		{
-			base();
-			this.setType(t);
+			this.SetTargetType(t);
 		}
 		
-		public IDictionary<String,Object> eval(IDictionary<String,Object> input) 
+		public IDictionary<string,object> eval(IDictionary<string,object> input) 
 		{
 			_returns = input;
 			return _returns;

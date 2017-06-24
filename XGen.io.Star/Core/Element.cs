@@ -24,7 +24,7 @@ namespace XGen.io.Star.Core
 		protected static bool _warnOnFailedGuard = false;
 		protected string _id;
 		protected Guid _uid;
-		protected Util.Trace _trace;
+	    protected Util.Trace _trace;
 		
 		public static void SetWarnOnErrroneousAction(bool b) 
 		{

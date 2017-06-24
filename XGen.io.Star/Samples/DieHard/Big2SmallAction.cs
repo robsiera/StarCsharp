@@ -30,25 +30,25 @@ using System.Collections.Generic;
 using Action = XGen.io.Star.Core.Action;
 using Type = XGen.io.Star.Core.Type;
 
-namespace XGen.io.Star.Sample.DieHard
+namespace XGen.io.Star.Samples.DieHard
 {
 	public class Big2SmallAction : Action 
 	{
 
 		public Big2SmallAction(Type t) 
 		{
-			this.setType(t);
+			this.SetTargetType(t);
 		}
 
-		public IDictionary<String,Object> eval(IDictionary<String,Object> input) 
+		public IDictionary<string,object> eval(IDictionary<string,object> input) 
 		{
-			_returns = new Dictionary<String,Object>();
+			_returns = new Dictionary<string,object>();
+
+		    var big = (short)input["big"];
+		    var small = (short)input["small"];
 			
-			Int16 big = (Int16)input["big"];
-			Int16 small = (Int16)input["small"];
-			
-			Int16 smallp = Math.Min(JugType.smallSize,big+small);
-			Int16 bigp = big - (smallp-small);
+			var smallp = Math.Min(JugType._smallSize,big+small);
+		    var bigp = big - (smallp-small);
 			_returns.Add("big", bigp);
 			_returns.Add("small", smallp);
 			return _returns;

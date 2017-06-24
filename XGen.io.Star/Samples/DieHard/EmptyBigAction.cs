@@ -25,30 +25,29 @@
  * For more information, please refer to <http://unlicense.org/>
  *//////////////////////////////////////////////////////////////////////////
 
-using System;
 using System.Collections.Generic;
 using Action = XGen.io.Star.Core.Action;
 using Type = XGen.io.Star.Core.Type;
 
-namespace XGen.io.Star.Sample.DieHard
+namespace XGen.io.Star.Samples.DieHard
 {
 	public class EmptyBigAction : Action 
 	{
 		public EmptyBigAction(Type t) 
 		{
-			this.setType(t);
+			this.SetTargetType(t);
 		}
 
-		public IDictionary<String,Object> eval(IDictionary<String,Object> input) 
+		public IDictionary<string,object> eval(IDictionary<string,object> input) 
 		{
-			_returns = new Dictionary<String,Object>();
-			//Int16 big = (Int16)input.get("big");
-			Int16 small = (Int16)input.get("small");
+			_returns = new Dictionary<string,object>();
+			//int big = (int)input["big");
+			short small = (short)input["small"];
 			
-			Int16 smallp = small;
-			Int16 bigp = 0;
-			_returns.put("big", bigp);
-			_returns.put("small", smallp);
+			short smallp = small;
+			short bigp = 0;
+			_returns.Add("big", bigp);
+			_returns.Add("small", smallp);
 			return _returns;
 		}
 	}
