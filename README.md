@@ -20,7 +20,7 @@ Credits for this initial effort goes to [Nikolay Pasko](https://github.com/nickp
 
 
 ## How do I get set up?
-* You can create STAR Component by subclassing the xgen.io.star.core.Component class.
+* You can create STAR Component by subclassing the XGen.Star.Scm.Component class.
 * You'll need to add one or more behaviors (States, Actions and Type)
 * The xgen.io.star.core.simulation allows you to "walk" your component and generate PlantUML activity or State diagrams. For instance, this is the state diagram created during the execution of the Factorial component (xgen.io.star.samples)
 
