@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B11F903A-D91F-48DB-8353-E89C75E2C04D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XGen.io.Star</RootNamespace>
+    <AssemblyName>XGen.io.Star</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Npgsql, Version=3.2.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.3.2.3\lib\net451\Npgsql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Action.cs" />
+    <Compile Include="Core\Behavior.cs" />
+    <Compile Include="Core\Component.cs" />
+    <Compile Include="Core\Connectors\Connector.cs" />
+    <Compile Include="Core\Connectors\DatabaseException.cs" />
+    <Compile Include="Core\Connectors\DynamoDBConnector.cs" />
+    <Compile Include="Core\Connectors\H2Connector.cs" />
+    <Compile Include="Core\Connectors\MySQLConnector.cs" />
+    <Compile Include="Core\Connectors\Options.cs" />
+    <Compile Include="Core\Connectors\PostgreSQLConnector.cs" />
+    <Compile Include="Core\DesiredState.cs" />
+    <Compile Include="Core\Element.cs" />
+    <Compile Include="Core\ForbiddenState.cs" />
+    <Compile Include="Core\Guard.cs" />
+    <Compile Include="Core\Property.cs" />
+    <Compile Include="Core\Range.cs" />
+    <Compile Include="Core\Relation.cs" />
+    <Compile Include="Core\Simulation\DesiredStep.cs" />
+    <Compile Include="Core\Simulation\ForbiddenStep.cs" />
+    <Compile Include="Core\Simulation\Sequence.cs" />
+    <Compile Include="Core\Simulation\Step.cs" />
+    <Compile Include="Core\Simulation\Walk.cs" />
+    <Compile Include="Core\State.cs" />
+    <Compile Include="Core\Type.cs" />
+    <Compile Include="Core\Util\BoundInterval.cs" />
+    <Compile Include="Core\Util\BoundRange.cs" />
+    <Compile Include="Core\Util\Exception.cs" />
+    <Compile Include="Core\Util\Interval.cs" />
+    <Compile Include="Core\Util\Operator.cs" />
+    <Compile Include="Core\Util\SimpleRange.cs" />
+    <Compile Include="Core\Util\Ticker.cs" />
+    <Compile Include="Core\Util\Trace.cs" />
+    <Compile Include="Samples\Factorial\EqualsOneRange.cs" />
+    <Compile Include="Samples\Factorial\EqualsTwoRange.cs" />
+    <Compile Include="Samples\Factorial\Factorial.cs" />
+    <Compile Include="Samples\Factorial\FactorialBehavior.cs" />
+    <Compile Include="Samples\Factorial\FactorialType.cs" />
+    <Compile Include="Samples\Factorial\GreaterThanOneRange.cs" />
+    <Compile Include="Samples\Factorial\InitializeAction.cs" />
+    <Compile Include="Samples\Factorial\LessThanOneRange.cs" />
+    <Compile Include="Samples\Factorial\MultiplyAction.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
